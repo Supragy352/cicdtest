@@ -20,27 +20,9 @@ if(WIN32)
         "E:/raylib/w64devkit/x86_64-w64-mingw32/include"
     )
     set(EXTRA_LIBS winmm gdi32 kernel32)
+    add_executable(cicdtest ${SOURCES})
+    target_link_libraries(cicdtest raylib ${EXTRA_LIBS})
 else()
-    set(EXTRA_LIBS "")
+    add_executable(cicdtest ${SOURCES})
+    target_link_libraries(cicdtest raylib)
 endif()
-
-# set(HEADERS
-#     ./src/animation/script.h
-# )
-
-add_executable(cicdtest ${SOURCES} ${HEADERS})
-
-target_link_libraries(cicdtest raylib ${EXTRA_LIBS})
-
-add_custom_target(build_and_run
-    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target cicdtest
-    COMMAND cicdtest
-    DEPENDS cicdtest
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
-
-add_custom_target(run
-    COMMAND cicdtest
-    DEPENDS cicdtest
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
