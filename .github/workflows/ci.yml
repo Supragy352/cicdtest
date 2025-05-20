@@ -3,8 +3,7 @@ name: Build Raylib Project
 on:
   push:
     branches:
-      - main
-      - master
+      - cicd-test
 
 jobs:
   build-linux:
